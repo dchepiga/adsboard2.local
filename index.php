@@ -5,7 +5,7 @@
  * Date: 07.12.14
  * Time: 19:34
  */
-include __DIR__.'/lib/Application.php';
+include __DIR__ . '/framework/FrontController.php';
 //var_dump($_GET);
 
 Application::run();
