@@ -31,13 +31,13 @@ class Route
         $this->actionName = 'index';
 
         $routes = explode('/', $_GET['action']);
-        error_log($routes);
+
         if (!empty($routes[0])){
             $this->controllerName = $routes[0];
         }
 
         if (!empty($routes[1])) {
-            $this->$actionName = $routes[1];
+            $this->actionName = $routes[1];
         }
 
         return [$this->controllerName, $this->actionName];

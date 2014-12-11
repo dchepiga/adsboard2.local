@@ -15,8 +15,9 @@ class View
         include 'application/views/layout/'.$templateView;
     }
 
-    public function error($contentView, $templateView = 'Layout.phtml')
+    public function error($contentView, $templateView = 'Layout.phtml', $data)
     {
+
         ob_start();
         include 'application/views/error/'.$contentView;
         $content = ob_get_clean();

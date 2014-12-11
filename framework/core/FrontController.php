@@ -17,6 +17,7 @@ class FrontController {
 
 
     static function run() {
+        session_start();
         Dispatcher::start();
 
     }

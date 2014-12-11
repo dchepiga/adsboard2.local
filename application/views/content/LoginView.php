@@ -2,7 +2,7 @@
 
 <div class="row">
     <div class="col-md-4">
-        <form role="form" action = "/login" method = "post">
+        <form role="form" action = "/login/submit" method = "post">
             <div class="form-group">
                 <label for="exampleInputEmail1">Email address</label>
                 <input type="email" class="form-control" id="input-email" placeholder="Enter email" name = "input-email">

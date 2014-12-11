@@ -11,7 +11,10 @@ class IndexController extends Controller{
 
     function indexAction() {
 
-        $this->view->render("HomeView.php","Layout.phtml");
+
+        ($_SESSION['logged'])? $greetings = 'Hello! Registered user!':$greetings = 'Hello!' ;
+
+        $this->view->render("HomeView.php","Layout.phtml",$greetings );
 
 
     }
