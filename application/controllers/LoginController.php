@@ -5,13 +5,11 @@
  * Date: 07.12.14
  * Time: 20:21
  */
-class UserController {
-    function loginAction() {
-        echo "Users - login";
+class LoginController extends Controller{
+    
+    function indexAction() {
+        $this->view->render("LoginView.php","Layout.phtml");
 
     }
-    function registerAction() {
-        echo "Users - register";
 
-    }
 }

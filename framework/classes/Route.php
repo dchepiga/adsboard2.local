@@ -7,7 +7,7 @@
  */
 class Route
 {
-    private  $actionName;
+    private $actionName;
     private $controllerName;
 
     public function getControllerName()
@@ -24,12 +24,16 @@ class Route
 
     public function getRoute()
     {
-        $this->controllerName = 'Index';
-        $this->actionName = 'home';
-        $routes = explode('/', $_GET['action']);
 
-        if (!empty($routes[0])) {
-            $this->$controllerName = $routes[0];
+
+
+        $this->controllerName = 'Index';
+        $this->actionName = 'index';
+
+        $routes = explode('/', $_GET['action']);
+        error_log($routes);
+        if (!empty($routes[0])){
+            $this->controllerName = $routes[0];
         }
 
         if (!empty($routes[1])) {

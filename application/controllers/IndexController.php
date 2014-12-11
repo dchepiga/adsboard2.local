@@ -9,10 +9,10 @@
 
 class IndexController extends Controller{
 
-    function homeAction() {
+    function indexAction() {
 
         $this->view->render("HomeView.php","Layout.phtml");
-        
+
 
     }
 }

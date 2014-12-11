@@ -1,6 +1,6 @@
 <div class="row">
     <div class="col-md-4">
-        <form role="form" action = "/buffered/index.php?action=registration" method = "post">
+        <form role="form" action = "/index.php?action=registration" method = "post">
             <!--            <form role="form" action = "/index.php?action=registration" method = "post">-->
             <div class="form-group">
                 <label for="exampleInputEmail1">Email address</label>
