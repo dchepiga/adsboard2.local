@@ -6,7 +6,9 @@
  * Time: 18:26
  */
 
-class IndexController {
+include __DIR__.'/../../framework/core/Controller.php';
+
+class IndexController extends Controller{
 
     function homeAction() {
 

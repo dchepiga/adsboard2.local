@@ -1,3 +1,5 @@
+
+
 <div class="row">
     <div class="col-md-4">
         <form role="form" action = "/buffered/index.php?action=login" method = "post">
@@ -14,3 +16,6 @@
         </form>
     </div>
 </div>
+
+
+

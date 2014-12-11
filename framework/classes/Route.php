@@ -7,69 +7,47 @@
  */
 class Route
 {
-    static function start()
+    private  $actionName;
+
+    /**
+     * @return mixed
+     */
+    public function getControllerName()
     {
-        // контроллер и действие по умолчанию
-        $controllerName = 'Index';
-        $actionName = 'home';
+        return $this->controllerName;
+    }
+
+    /**
+     * @return mixed
+     */
+    public function getActionName()
+    {
+        return $this->actionName;
+    }
+    private $controllerName;
+
+    public function getRoute()
+    {
 
         $routes = explode('/', $_GET['action']);
-        //var_dump($_GET);
 
-        // получаем имя контроллера
-        if ( !empty($routes[0]) )
-        {
-            $controllerName = $routes[0];
+        if (!empty($routes[0])) {
+            $this->$controllerName = $routes[0];
         }
 
-        // получаем имя экшена
-        if ( !empty($routes[1]) )
-        {
-            $actionName = $routes[1];
+        if (!empty($routes[1])) {
+            $this->$actionName = $routes[1];
         }
 
-        $controllerName = ucfirst($controllerName).'Controller';
-        $actionName = $actionName.'action';
-
-
-        // подцепляем файл с классом контроллера
-        $controllerFile = $controllerName.'.php';
-        $controllerPath = "application/controllers/".$controllerFile;
-        if(file_exists($controllerPath))
-        {
-            include "application/controllers/".$controllerFile;
-        }
-        else
-        {
-            /*
-            правильно было бы кинуть здесь исключение,
-            но для упрощения сразу сделаем редирект на страницу 404
-            */
-            Route::errorPage();
-        }
-
-        // создаем контроллер
-        $controller = new $controllerName;
-        $action = $actionName;
-
-        if(method_exists($controller, $action))
-        {
-            // вызываем действие контроллера
-            $controller->$action();
-        }
-        else
-        {
-            // здесь также разумнее было бы кинуть исключение
-            Route::errorPage();
-        }
+        return [$this->controllerName, $this->actionName];
 
     }
 
-    function errorPage()
-    {
-        $host = 'http://'.$_SERVER['HTTP_HOST'].'/';
-        header('HTTP/1.1 404 Not Found');
-        header("Status: 404 Not Found");
-        include 'error.php';
-    }
+//    function errorPage()
+//    {
+//        $host = 'http://'.$_SERVER['HTTP_HOST'].'/';
+//        header('HTTP/1.1 404 Not Found');
+//        header("Status: 404 Not Found");
+//        include '/application/views/error/ErrorView.php';
+//    }
 }

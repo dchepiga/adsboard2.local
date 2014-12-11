@@ -7,13 +7,20 @@
  */
 class View
 {
-   // public $templateView = 'layout.phtml';
-
-    function view($contentView, $templateView)
+    static function render($contentView, $templateView = 'Layout.phtml', $data = null)
     {
         ob_start();
-        include 'application/views/'.$contentView;
+        include 'application/views/content/'.$contentView;
         $content = ob_get_clean();
-        include 'application/views/'.$templateView;
+        include 'application/views/layout/'.$templateView;
+    }
+
+    static function error($contentView, $templateView = 'Layout.phtml')
+    {
+        ob_start();
+        include 'application/views/error/'.$contentView;
+        $content = ob_get_clean();
+        include 'application/views/layout/'.$templateView;
+
     }
 }
