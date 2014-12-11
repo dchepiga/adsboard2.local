@@ -5,7 +5,7 @@
  * Date: 09.12.14
  * Time: 20:56
  */
-include __DIR__.'/../classes/Route.php';
+//include __DIR__.'/../classes/Route.php';
 
 class Dispatcher
 {
@@ -15,8 +15,7 @@ class Dispatcher
 
 
         // контроллер и действие по умолчанию
-        $controllerName = 'Index';
-        $actionName = 'home';
+
 
         $router = new Route();
         $router->getRoute();

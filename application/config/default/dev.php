@@ -1,7 +1,7 @@
 <?php
 
 return array(
-    "db1" => array(
+    "db" => array(
         "host" => "u",
         "name" =>"u",
         "user" => "u",

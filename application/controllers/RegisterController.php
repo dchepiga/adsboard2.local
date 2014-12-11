@@ -6,10 +6,7 @@
  * Time: 20:21
  */
 class UserController {
-    function loginAction() {
-        echo "Users - login";
 
-    }
     function registerAction() {
         echo "Users - register";
 

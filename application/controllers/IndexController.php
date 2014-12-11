@@ -6,13 +6,13 @@
  * Time: 18:26
  */
 
-include __DIR__.'/../../framework/core/Controller.php';
 
 class IndexController extends Controller{
 
     function homeAction() {
 
-        echo "Index-home";
+        $this->view->render("HomeView.php","Layout.phtml");
+        
 
     }
 }

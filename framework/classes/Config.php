@@ -10,33 +10,26 @@ class Config
 {
     private static $conf;
 
-    public static function init ($confName="default")
-    {
-        self::$conf = require $_SERVER['DOCUMENT_ROOT'].'/application/config/default.php';
-        if(isset($confName)&& !is_null(self::$conf))
-        {
-            $userConfig = require $_SERVER['DOCUMENT_ROOT'].'/application/config/'.$confName.'/'.$confName.'.php';
-            self::$conf = array_merge_recursive(self::$conf, $userConfig);
-        }
-        return self::$conf;
 
-    }
-    static function get ($key)
+    static function get($key)
     {
         if(array_key_exists($key,self::$conf))
             return self::$conf[$key];
         return self::$conf;
     }
 
-    public static function initTest($dir)
+    public static function init($dir = null)
     {
         $pathDefault = $_SERVER['DOCUMENT_ROOT'].'/application/config/default/';
-        $pathConfig =  $_SERVER['DOCUMENT_ROOT'].'/application/config/'.$dir.'/';
-
         $confDefault = Config::assembleConfig($pathDefault);
-        $confUser = Config::assembleConfig($pathConfig);
+        self::$conf = $confDefault;
 
-        return self::$conf = array_replace_recursive($confDefault,$confUser);
+        if(isset($dir)) {
+            $pathConfig = $_SERVER['DOCUMENT_ROOT'] . '/application/config/' . $dir . '/';
+            $confUser = Config::assembleConfig($pathConfig);
+            self::$conf = array_replace_recursive($confDefault,$confUser);
+        }
+        return self::$conf;
     }
 
     function assembleConfig($path)

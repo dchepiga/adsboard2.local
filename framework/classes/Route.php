@@ -8,27 +8,24 @@
 class Route
 {
     private  $actionName;
+    private $controllerName;
 
-    /**
-     * @return mixed
-     */
     public function getControllerName()
     {
         return $this->controllerName;
     }
 
-    /**
-     * @return mixed
-     */
+
     public function getActionName()
     {
         return $this->actionName;
     }
-    private $controllerName;
+
 
     public function getRoute()
     {
-
+        $this->controllerName = 'Index';
+        $this->actionName = 'home';
         $routes = explode('/', $_GET['action']);
 
         if (!empty($routes[0])) {

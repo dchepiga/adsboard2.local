@@ -8,8 +8,8 @@
 
 class Controller {
 
-    private $model;
-    private $view;
+    protected  $model;
+    protected  $view;
 
     function __construct()
     {
@@ -18,9 +18,9 @@ class Controller {
     }
 
 
-    function render(){
-        echo get_class ($this).'\n';
-        echo $this->$myAction;
-    }
+//    function render(){
+//        echo get_class ($this).'\n';
+//        echo $this->$myAction;
+//    }
 
 }

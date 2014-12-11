@@ -7,7 +7,7 @@
  */
 class View
 {
-    static function render($contentView, $templateView = 'Layout.phtml', $data = null)
+    public function render($contentView, $templateView = 'Layout.phtml', $data = null)
     {
         ob_start();
         include 'application/views/content/'.$contentView;
@@ -15,7 +15,7 @@ class View
         include 'application/views/layout/'.$templateView;
     }
 
-    static function error($contentView, $templateView = 'Layout.phtml')
+    public function error($contentView, $templateView = 'Layout.phtml')
     {
         ob_start();
         include 'application/views/error/'.$contentView;
