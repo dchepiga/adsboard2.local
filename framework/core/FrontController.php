@@ -11,6 +11,7 @@ include __DIR__ . '/Model.php';
 include __DIR__ . '/Controller.php';
 include dirname(__DIR__).'/classes/Config.php';
 include dirname(__DIR__).'/classes/Route.php';
+include dirname(__DIR__).'/classes/Registry.php';
 
 
 class FrontController {

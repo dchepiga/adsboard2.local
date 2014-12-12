@@ -8,6 +8,13 @@
 include __DIR__ . '/framework/core/FrontController.php';
 //include __DIR__ . '/framework/core/View.php';
 
-FrontController::run();
+//FrontController::run();
+var_dump(Config::init('dev'));
+var_dump(Config::get('db','host'));
+var_dump(Config::get('db'));
+var_dump(Config::get());
+
+var_dump(Registry::get());
+var_dump(Registry::get('title'));
 
 

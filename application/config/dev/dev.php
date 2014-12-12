@@ -2,8 +2,8 @@
 
 return array(
     "db" => array(
-        "host" => "host",
-        "name" =>"name",
+        "host" => "host_dev",
+        "name" => "name",
 
     )
 );

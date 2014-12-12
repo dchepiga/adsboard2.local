@@ -1,45 +1,57 @@
 <?php
+
 /**
  * Created by PhpStorm.
  * User: dev
  * Date: 10.12.14
  * Time: 11:10
  */
-
 class Config
 {
     private static $conf;
 
 
-    static function get($key)
+    public static function get($key = null, $subkey = null)
     {
-        if(array_key_exists($key,self::$conf))
+        if (is_null($key) && is_null($subkey))
+            return self::$conf;
+        if (array_key_exists($key, self::$conf) && is_null($subkey))
             return self::$conf[$key];
-        return self::$conf;
+        if (array_key_exists($subkey, self::$conf[$key]) && !is_null($key) && !is_null($subkey))
+            return self::$conf[$key][$subkey];
+        return false;
     }
 
     public static function init($dir = null)
     {
-        $pathDefault = $_SERVER['DOCUMENT_ROOT'].'/application/config/default/';
+        $pathDefault = $_SERVER['DOCUMENT_ROOT'] . '/application/config/default/';
         $confDefault = Config::assembleConfig($pathDefault);
         self::$conf = $confDefault;
 
-        if(isset($dir)) {
+        if (isset($dir)) {
             $pathConfig = $_SERVER['DOCUMENT_ROOT'] . '/application/config/' . $dir . '/';
             $confUser = Config::assembleConfig($pathConfig);
-            self::$conf = array_replace_recursive($confDefault,$confUser);
+            self::$conf = array_replace_recursive($confDefault, $confUser);
         }
-        return self::$conf;
+
+        // Registry::init();
+        $registry = Config::get('registry');
+        if ($registry)
+        {
+            foreach($registry as $key => $value)
+                Registry::set($key, $value);
+        }
+
+        // return self::$conf;
     }
 
-    function assembleConfig($path)
+    public function assembleConfig($path)
     {
-        $filesList = glob($path.'*.php');
+        $filesList = glob($path . '*.php');
         $config = array();
-        foreach($filesList as $file)
-        {
+        foreach ($filesList as $file) {
             $confTemp = require_once $file;
-            $config = array_merge($config,$confTemp);
+            $config = array_merge($config, $confTemp);
         }
         return $config;
     }
